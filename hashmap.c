@@ -46,7 +46,8 @@ int is_equal(void* key1, void* key2){
 
 HashMap * createMap(long capacity) {
     HashMap* map = (HashMap*) malloc(sizeof(HashMap));
-    realloc(map->buckets, capacity * sizeof(Pair*));
+    HashMap* buckets = (HashMap*) malloc(sizeof(HashMap)*capacity);
+    map->buckets = buckets;
     map->size = 0;
     map->capacity = capacity;
     map->current = -1;
