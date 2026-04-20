@@ -34,3 +34,23 @@ hashmap.c:56:1: error: control reaches end of non-void function [-Werror=return-
       | ^
 cc1: all warnings being treated as errors
 dd29ebe
+Mon Apr 20 03:41:31 AM UTC 2026: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘createMap’:
+hashmap.c:49:5: error: ignoring return value of ‘realloc’ declared with attribute ‘warn_unused_result’ [-Werror=unused-result]
+   49 |     realloc(map->buckets, capacity * sizeof(Pair*));
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hashmap.c:49:16: error: ‘*map.buckets’ is used uninitialized [-Werror=uninitialized]
+   49 |     realloc(map->buckets, capacity * sizeof(Pair*));
+      |             ~~~^~~~~~~~~
+hashmap.c:54:21: error: pointer may be used after ‘realloc’ [-Werror=use-after-free]
+   54 |         map->buckets[i] = NULL;
+      |                     ^
+hashmap.c:49:5: note: call to ‘realloc’ here
+   49 |     realloc(map->buckets, capacity * sizeof(Pair*));
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+d9a7245
